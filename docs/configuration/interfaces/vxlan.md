@@ -30,9 +30,8 @@ When configuring VXLAN in a VyOS virtual machine, ensure that MAC spoofing
 may block forwarded frames.
 
 :::{note}
-Although the IANA-assigned VXLAN port is **4789**, VyOS uses the
-Linux default UDP port **8472** for VXLAN interfaces. To ensure compatibility
-with other vendors, set the port to the IANA standard **4789**.
+VyOS uses the IANA-assigned UDP port **4789** by default. Configure the
+same destination port on both VTEPs.
 :::
 
 ## Configuration
@@ -61,8 +60,7 @@ segments to coexist within the same administrative domain.
 Configure the UDP port of the remote VXLAN endpoint.
 
 :::{note}
-Although the IANA-assigned VXLAN port is **4789**, VyOS uses the
-Linux default UDP port **8472** for VXLAN interfaces.
+The default UDP port is **4789**.
 :::
 ```
 
@@ -348,7 +346,7 @@ This command configures the unique ID for the VXLAN interface.
 set interfaces vxlan vxlan241 port 12345
 ```
 
-VyOS uses the Linux default UDP port **8472** for VXLAN interfaces. This
+VyOS uses UDP port **4789** by default for VXLAN interfaces. This
 command allows you to configure a different UDP port.
 
 ## Unicast VXLAN
@@ -369,5 +367,5 @@ set interfaces vxlan vxlan241 remote 10.1.3.3
 set interfaces vxlan vxlan241 remote 10.1.2.2
 ```
 
-The default UDP port is 8472. To configure a different port, use `set
+The default UDP port is 4789. To configure a different port, use `set
 interfaces vxlan <vxlanN> port <port>`.
